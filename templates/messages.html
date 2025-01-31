@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Messages{% endblock %}
+
+{% block content %}
+    <h1>All Messages 📩</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Message</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for msg in messages %}
+                <tr>
+                    <td>{{ msg.name }}</td>
+                    <td>{{ msg.message }}</td>
+                    <td>
+                        <a href="/edit/{{ msg.id }}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="/delete/{{ msg.id }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Message{% endblock %}
+
+{% block content %}
+    <h1>Edit Your Message ✏️</h1>
+    <form action="/update/{{ message.id }}" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ message.name }}" required><br><br>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required>{{ message.message }}</textarea><br><br>
+
+        <button type="submit">Update</button>
+    </form>
+    <br>
+    <a href="/messages">Cancel</a>
+{% endblock %}
